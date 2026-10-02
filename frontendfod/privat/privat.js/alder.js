@@ -4,7 +4,7 @@ function prodoct(id) {
 
     // Get customer's orders
     
-    fetch(`http://localhost:3500/prodot/${id}`, {
+    fetch(`/prodot/${id}`, {
         method: 'GET'
     })
     .then((respo) => {
@@ -16,7 +16,7 @@ function prodoct(id) {
 
         // Get all products
 
-        return fetch('http://localhost:3500/prodot');
+        return fetch('/prodot');
     })
     .then((res) => {
         return res.json();

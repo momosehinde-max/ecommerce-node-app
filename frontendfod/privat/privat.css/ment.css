@@ -192,6 +192,7 @@ body {
 @media (max-width: 500px) {
     body {
         padding: 20px 12px;
+        
     }
 
     .show {

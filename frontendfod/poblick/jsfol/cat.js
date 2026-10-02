@@ -60,7 +60,7 @@ function send() {
 
   console.log('TOKEN:', tokin);
 
-  fetch('http://localhost:3500/cat', {
+  fetch('/cat', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ if(localStorage.getItem('man')) {
     let passw = document.querySelector('.password').value;
     let email = document.querySelector('.email').value;
 
-    fetch('http://localhost:3500/acunt',{
+    fetch('/acunt',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'  
@@ -133,7 +133,7 @@ if(localStorage.getItem('man')) {
     let passw = document.querySelector('.passworde').value;
     let email = document.querySelector('.emaile').value;
 
-    fetch('http://localhost:3500/acunte',{
+    fetch('/acunte',{
       method:'POST',
       headers:{
         'Content-Type':'application/json' 

@@ -1,7 +1,7 @@
   
  
  export function prodoct() {
-     return fetch('http://localhost:3500/prodot',
+     return fetch('/prodot',
       {method:'GET'})
       .then((dater) => dater.json())
     };

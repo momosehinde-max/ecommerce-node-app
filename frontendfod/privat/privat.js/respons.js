@@ -53,7 +53,7 @@ async function add() {
         try {
 
             const response = await fetch(
-                'http://localhost:3500/prodot',
+                '/prodot',
                 {
                     method: 'POST',
                     body: formData
@@ -91,7 +91,7 @@ async function add() {
         try {
 
             const response = await fetch(
-                `http://localhost:3500/prodot/${numb}`,
+                `/prodot/${numb}`,
                 {
                     method: 'PUT',
                     body: formData
@@ -130,7 +130,7 @@ async function show() {
     try {
 
         const response = await fetch(
-            'http://localhost:3500/prodot',
+            '/prodot',
             {
                 method: 'GET'
             }
@@ -239,7 +239,7 @@ async function delet(id) {
     try {
 
         const response = await fetch(
-            `http://localhost:3500/prodot/${id}`,
+            `/prodot/${id}`,
             {
                 method: 'DELETE'
             }

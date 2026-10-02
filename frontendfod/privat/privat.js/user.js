@@ -9,7 +9,7 @@ async function diplay() {
     try {
 
         const response = await fetch(
-            'http://localhost:3500/acunte',
+            '/acunte',
             {
                 method: 'GET'
             }
@@ -75,7 +75,7 @@ async function prodoct(id) {
         // GET CUSTOMER ORDER
 
         const orderResponse = await fetch(
-            `http://localhost:3500/prodot/${id}`,
+            `/prodot/${id}`,
             {
                 method: 'GET'
             }
@@ -88,7 +88,7 @@ async function prodoct(id) {
         // GET ALL PRODUCTS
 
         const productResponse = await fetch(
-            'http://localhost:3500/prodot',
+            '/prodot',
             {
                 method: 'GET'
             }
