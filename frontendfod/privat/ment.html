@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a73e8">
+  <title>Admin — Manage products</title>
+  <link rel="stylesheet" href="/cssfol/theme.css">
+  <link rel="stylesheet" href="privat.css/ment.css">
+</head>
+<body>
+
+  <!-- ============ APP BAR ============ -->
+  <header class="abar gbar">
+    <div class="gbar-inner">
+      <a class="gbrand" href="/costom_ui.html">
+        <span class="gmark" aria-hidden="true"></span>
+        Marvel<span class="dot">.dev</span>
+      </a>
+      <span class="g-chip">Admin</span>
+      <span class="gspacer"></span>
+      <a class="gnav-link" href="/costom_ui.html">View shop</a>
+    </div>
+  </header>
+
+  <main class="admin">
+
+    <div class="admin-head">
+      <span class="g-chip">Dashboard</span>
+      <h1>Manage products</h1>
+      <p>
+        Pick an image, give the product a name and a price, then press
+        <strong>add</strong>. Use <strong>EDIT</strong> on any card to change it
+        and <strong>DELET</strong> to remove it.
+      </p>
+    </div>
+
+    <!-- ============ ADD / EDIT PANEL ============ -->
+    <div class="panel">
+
+      <div class="thumb">
+        <span class="thumb-ph" aria-hidden="true"></span>
+        <!-- respons.js previews the picked image here -->
+        <img class="show" alt="Product image preview">
+      </div>
+
+      <div class="fields">
+        <input type="file" accept="image/*" class="shus" placeholder="prodoct image">
+        <input type="text" class="name" placeholder="prodoct name">
+        <input type="number" class="price" placeholder="prodoct price">
+
+        <div class="actions">
+          <!-- NOTE: the label must stay exactly "add" — respons.js compares
+               innerHTML to decide between adding and editing. -->
+          <button class="add" data-ripple="off">add</button>
+          <button class="user">see user</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============ PRODUCT LIST ============ -->
+    <div class="list-head">
+      <h2>Your products</h2>
+      <p>Every change saves straight away</p>
+    </div>
+
+    <!-- respons.js renders the product cards in here -->
+    <section class="rice g-empty" data-empty="No products yet — add your first one above."></section>
+
+  </main>
+
+  <script src="/jsfol/ui.js" defer></script>
+  <script type="module" src="/privat.js/respons.js"></script>
+
+</body>
+</html>

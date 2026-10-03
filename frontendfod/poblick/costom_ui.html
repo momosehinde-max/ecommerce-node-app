@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Marvel.dev — shop the collection.">
+  <meta name="theme-color" content="#1a73e8">
+  <title>Marvel.dev — Shop</title>
+  <link rel="stylesheet" href="/cssfol/theme.css">
+  <link rel="stylesheet" href="/cssfol/styles.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="top">
+    <div class="logo">
+      <a href="/costom_ui.html">Marvel<span>.dev</span></a>
+    </div>
+
+    <a href="#products" class="is-active">Home</a>
+
+    <span class="nav-spacer"></span>
+
+    <a href="/recat.html" class="cart">
+      <i class="cart-ico" aria-hidden="true"></i>
+      <span class="cart-label">Cart</span>
+      <span class="cart-count">0</span>
+    </a>
+
+    <button class="login">Login</button>
+  </header>
+
+  <!-- ============ CONTENT ============ -->
+  <main class="wrap">
+
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="g-chip">New arrivals</span>
+        <h1>Everything you need, delivered fast.</h1>
+        <p>
+          Browse the store, add what you like to your cart and check out in seconds.
+          Fresh products added every week — prices in Naira.
+        </p>
+        <a class="hero-cta" href="#products">
+          Shop the collection
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- grid heading -->
+    <div class="sect-head" id="products">
+      <h2>Featured products</h2>
+      <p>Hand-picked by the store</p>
+    </div>
+
+    <!-- dir.js renders the product cards in here -->
+    <section class="rice g-empty" data-empty="No products in the store yet — check back soon."></section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="foot-inner">
+      <span class="foot-brand"><i aria-hidden="true"></i>Marvel.dev</span>
+      <span>A simple store built with Node, Express &amp; MongoDB.</span>
+      <span>&copy; <span id="yr">2026</span> Marvel.dev</span>
+    </div>
+  </footer>
+
+  <script>
+    /* keeps the footer year current — display only */
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+  <script src="/jsfol/ui.js" defer></script>
+  <script type="module" src="/jsfol/dir.js"></script>
+
+</body>
+</html>

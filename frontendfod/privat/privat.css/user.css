@@ -1,0 +1,303 @@
+
+
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  background: var(--g-bg);
+  color: var(--g-text);
+  display: flex;
+  flex-direction: column;
+  background-image:
+    radial-gradient(720px 360px at 100% -6%, rgba(66,133,244,.14), transparent 62%),
+    radial-gradient(600px 320px at -8% 106%, rgba(52,168,83,.12), transparent 62%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  min-height: var(--nav-h);
+  height: auto;
+  margin: 0;
+  padding: 10px clamp(14px, 4vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 0;                       /* the three labels read as one sentence */
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border: 0;
+  border-bottom: 1px solid var(--g-gray-200);
+  border-radius: 0;
+  transition: box-shadow var(--t-base) var(--ease);
+}
+.nav.is-stuck { box-shadow: 0 1px 2px rgba(60,64,67,.18), 0 2px 6px 2px rgba(60,64,67,.08); }
+
+/* the back button */
+button.para {
+  position: relative;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  margin-right: clamp(10px, 2.4vw, 20px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--g-gray-100);
+  color: var(--g-text-2);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              transform var(--t-base) var(--ease);
+}
+button.para:hover { background: var(--g-gray-200); color: var(--g-text); transform: translateX(-2px); }
+button.para:active { transform: translateX(-4px) scale(.96); }
+
+/* the three title fragments */
+p.para {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--g-text);
+  font-size: clamp(15px, 3.2vw, 18px);
+  font-weight: 600;
+  letter-spacing: -.3px;
+  line-height: 1.35;
+  flex: 0 0 auto;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+/* breathing room only around the "&" so it reads naturally */
+p.para:nth-of-type(1) { padding-right: .34em; }
+p.para:nth-of-type(2) { color: var(--g-text-3); font-weight: 500; padding-right: .34em; }
+p.para:nth-of-type(3) { flex: 1 1 auto; }
+
+/* drilling into one customer's orders: "Orders for <name>",
+   so the "&" fragment steps out of the sentence */
+.nav.is-drill p.para:nth-of-type(2) { display: none; }
+.nav.is-drill p.para:nth-of-type(1) { padding-right: .3em; }
+.nav.is-drill p.para:nth-of-type(3) { color: var(--g-blue); }
+
+/* LIST SHELL*/
+body > section {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px) clamp(14px, 4vw, 28px) clamp(40px, 8vw, 72px);
+}
+
+.marv {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 18px);
+}
+
+/* CUSTOMER CARD   (.butaddetal) */
+.butaddetal {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  padding: clamp(16px, 2.6vw, 24px) clamp(18px, 3vw, 28px);
+  background: var(--g-surface);
+  border: 1px solid var(--g-gray-200);
+  border-left: 4px solid var(--g-blue);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(14px, 2.4vw, 24px);
+  box-shadow: 0 1px 2px rgba(60,64,67,.10);
+  transition: transform var(--t-base) var(--ease),
+              box-shadow var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease);
+}
+.butaddetal:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-2);
+}
+.alldital {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.detal {
+  margin: 0;
+  font-size: clamp(13.5px, 1.6vw, 15px);
+  line-height: 1.5;
+  color: var(--g-text-2);
+  overflow-wrap: anywhere;
+}
+/* first line holds the customer name */
+.detal:first-child {
+  font-size: clamp(16px, 2.2vw, 18px);
+  font-weight: 600;
+  letter-spacing: -.2px;
+  color: var(--g-text);
+}
+/* second line is the email — give it the muted mail look */
+.detal:nth-child(2) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.detal:nth-child(2)::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  background: var(--g-text-3);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---------- action button ---------- */
+.seebt {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--g-blue-soft);
+  color: var(--g-blue);
+  font-size: 14.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              box-shadow var(--t-base) var(--ease),
+              transform var(--t-fast) var(--ease);
+}
+.seebt:hover { background: var(--g-blue); color: #fff; box-shadow: var(--sh-1); transform: translateY(-2px); }
+.seebt:active { transform: translateY(0) scale(.98); }
+
+/* ==========================================================================
+   ORDER CARD   (.gen)  — used by user.js prodoct() and alder.js
+   ========================================================================== */
+.gen {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  padding: clamp(16px, 2.6vw, 24px) clamp(18px, 3vw, 28px);
+  background: var(--g-surface);
+  border: 1px solid var(--g-gray-200);
+  border-left: 4px solid var(--g-green);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 2.6vw, 28px);
+  box-shadow: 0 1px 2px rgba(60,64,67,.10);
+  transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
+}
+.gen:hover { transform: translateY(-3px); box-shadow: var(--sh-2); }
+.fest {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.infor {
+  margin: 0;
+  font-size: clamp(13.5px, 1.6vw, 15px);
+  line-height: 1.5;
+  color: var(--g-text-2);
+  overflow-wrap: anywhere;
+}
+/* first line = product name */
+.infor:first-child {
+  font-size: clamp(16px, 2.2vw, 18px);
+  font-weight: 600;
+  letter-spacing: -.2px;
+  color: var(--g-text);
+}
+/* second line = price */
+.infor:nth-child(2) {
+  color: var(--g-green);
+  font-weight: 700;
+}
+/* third line = quantity → render as a chip */
+.infor:nth-child(3) {
+  align-self: flex-start;
+  margin-top: 3px;
+  padding: 4px 13px;
+  border-radius: var(--r-pill);
+  background: var(--g-gray-100);
+  color: var(--g-text-2);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.img {
+  width: clamp(96px, 14vw, 148px);
+  height: clamp(96px, 14vw, 148px);
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  border: 1px solid var(--g-gray-200);
+  background: linear-gradient(135deg, var(--g-gray-100), #fff);
+  transition: transform .5s var(--ease-out);
+}
+.gen:hover .img { transform: scale(1.05); }
+
+/*  RESPONSIVE */
+@media (max-width: 620px) {
+  body > section { padding-left: 14px; padding-right: 14px; }
+
+  .butaddetal {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .seebt { width: 100%; padding: 13px; }
+
+  .gen {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 420px) {
+  button.para { width: 38px; height: 38px; margin-right: 10px; }
+  p.para { font-size: 14px; }
+}
+
+@media (min-width: 481px) and (max-width: 900px) {
+  .img { width: 128px; height: 128px; }
+}
+
+@media (min-width: 1200px) {
+  .marv { gap: 20px; }
+}

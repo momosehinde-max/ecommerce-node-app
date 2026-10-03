@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=/costom_ui.html">
+  <title>Marvel.dev</title>
+  <link rel="stylesheet" href="/cssfol/theme.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background-image:
+        radial-gradient(760px 380px at 100% -10%, rgba(66,133,244,.16), transparent 62%),
+        radial-gradient(620px 360px at -10% 110%, rgba(52,168,83,.14), transparent 62%);
+      background-repeat: no-repeat;
+    }
+    .boot { animation: g-fade-up .5s var(--ease-out) both; }
+    .boot h1 { margin: 18px 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -.3px; }
+    .boot p { margin: 0 0 20px; color: var(--g-text-2); font-size: 14.5px; }
+    .boot .dots { display: inline-flex; gap: 7px; }
+    .boot .dots i {
+      width: 10px; height: 10px; border-radius: 50%;
+      animation: g-float .9s ease-in-out infinite;
+    }
+    .boot .dots i:nth-child(1) { background: var(--g-4); }
+    .boot .dots i:nth-child(2) { background: var(--g-4b); animation-delay: .12s; }
+    .boot .dots i:nth-child(3) { background: var(--g-4c); animation-delay: .24s; }
+    .boot .dots i:nth-child(4) { background: var(--g-4d); animation-delay: .36s; }
+  </style>
+</head>
+<body>
+  <div class="boot">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <h1>Marvel.dev</h1>
+    <p>Taking you to the store&hellip;</p>
+    <a class="gnav-link" href="/costom_ui.html">Continue to the shop &rarr;</a>
+  </div>
+
+  <script>location.replace('/costom_ui.html');</script>
+</body>
+</html>

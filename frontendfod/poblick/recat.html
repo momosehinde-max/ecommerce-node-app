@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a73e8">
+  <title>Your cart — Marvel.dev</title>
+  <link rel="stylesheet" href="/cssfol/theme.css">
+  <link rel="stylesheet" href="/cssfol/catsee.css">
+</head>
+<body>
+
+  <nav class="nave">
+    <button class="back" type="button" aria-label="Back to shop">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <p class="wirt">see your product</p>
+
+    <button class="chekout" type="button">checkout</button>
+  </nav>
+
+  <!-- recat.js renders one .rice row per cart item in here -->
+  <section class="section g-empty" data-empty="Your cart is empty — add something from the shop."></section>
+
+  <script src="/jsfol/ui.js" defer></script>
+  <script type="module" src="/jsfol/recat.js"></script>
+
+</body>
+</html>

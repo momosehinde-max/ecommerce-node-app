@@ -1,0 +1,302 @@
+
+
+body {
+  font-family: var(--font);
+  background: var(--g-bg);
+  color: var(--g-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+  
+.nave {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 18px);
+  min-height: var(--nav-h);
+  padding: 10px clamp(14px, 4vw, 28px);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--g-gray-200);
+  transition: box-shadow var(--t-base) var(--ease);
+}
+.nave.is-stuck {
+  box-shadow: 0 1px 2px rgba(60,64,67,.18), 0 2px 6px 2px rgba(60,64,67,.08);
+}
+
+/* back arrow — round Material icon button */
+.back {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--g-gray-100);
+  color: var(--g-text-2);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              transform var(--t-base) var(--ease);
+}
+.back:hover { background: var(--g-gray-200); color: var(--g-text); transform: translateX(-2px); }
+.back:active { transform: translateX(-4px) scale(.96); }
+
+/* page title */
+.wirt {
+  flex: 1 1 auto;
+  margin: 0;
+  font-size: clamp(16px, 3.4vw, 20px);
+  font-weight: 600;
+  letter-spacing: -.3px;
+  color: var(--g-text);
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* checkout action in the nav */
+.chekout {
+  flex: 0 0 auto;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: var(--g-blue);
+  color: #fff;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 1px 2px rgba(26,115,232,.35);
+  transition: background var(--t-fast) var(--ease),
+              box-shadow var(--t-base) var(--ease),
+              transform var(--t-fast) var(--ease);
+}
+.chekout:hover { background: var(--g-blue-hover); box-shadow: var(--sh-2); transform: translateY(-2px); }
+.chekout:active { transform: translateY(0); }
+
+/* LIST */
+.section {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(18px, 3.5vw, 34px) clamp(14px, 4vw, 28px) clamp(40px, 8vw, 70px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 18px);
+}
+
+
+
+.rice {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) auto;
+  grid-template-areas: "img info ctrl";
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 24px);
+  padding: clamp(14px, 2.2vw, 20px);
+  background: var(--g-surface);
+  border: 1px solid var(--g-gray-200);
+  border-radius: var(--r-lg);
+  box-shadow: 0 1px 2px rgba(60,64,67,.10);
+  transition: box-shadow var(--t-base) var(--ease),
+              transform var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease);
+}
+
+/* entrance animation only on the first render; pressing +/- or delete
+   re-renders the list, and rows should update instantly after that
+   (ui.js adds .is-settled once the first render has settled) */
+.section:not(.is-settled) .rice {
+  animation: g-fade-up .45s var(--ease-out) both;
+}
+.rice:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-2);
+  border-color: transparent;
+}
+/* stagger the first render (nth-child does it, no JS needed) */
+.section:not(.is-settled) .rice:nth-child(1) { animation-delay: .02s; }
+.section:not(.is-settled) .rice:nth-child(2) { animation-delay: .07s; }
+.section:not(.is-settled) .rice:nth-child(3) { animation-delay: .12s; }
+.section:not(.is-settled) .rice:nth-child(4) { animation-delay: .17s; }
+.section:not(.is-settled) .rice:nth-child(5) { animation-delay: .22s; }
+.section:not(.is-settled) .rice:nth-child(6) { animation-delay: .27s; }
+.section:not(.is-settled) .rice:nth-child(7) { animation-delay: .32s; }
+.section:not(.is-settled) .rice:nth-child(8) { animation-delay: .37s; }
+
+.rice > .allinfo { grid-area: info; min-width: 0; }
+.rice > div:not(.allinfo):not(.img) { grid-area: ctrl; }
+.rice > .img { grid-area: img; }
+
+/* ---------- text ---------- */
+.allinfo { margin: 0; padding: 0; }
+.info {
+  margin: 0 0 5px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--g-text-2);
+  overflow-wrap: anywhere;
+}
+.info:last-child { margin-bottom: 0; }
+.info:first-child {
+  font-size: clamp(16px, 2.6vw, 18px);
+  font-weight: 600;
+  color: var(--g-text);
+  letter-spacing: -.2px;
+}
+/* "price: 125000" line gets the green money treatment */
+.info:nth-child(2) {
+  color: var(--g-green);
+  font-weight: 700;
+  font-size: 15.5px;
+}
+
+/* ---------- image (used on BOTH the wrapper div and the <img>) ---------- */
+div.img {
+  width: 128px;
+  height: 128px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--g-gray-100), #fff);
+  border: 1px solid var(--g-gray-200);
+}
+img.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  transition: transform .5s var(--ease-out);
+}
+.rice:hover img.img { transform: scale(1.07); }
+
+/* ---------- quantity controls ---------- */
+.rice > div:not(.allinfo):not(.img) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.rice > div:not(.allinfo):not(.img) button {
+  height: 40px;
+  min-width: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--g-border);
+  border-radius: var(--r-pill);
+  background: #fff;
+  color: var(--g-text-2);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--t-fast) var(--ease),
+              color var(--t-fast) var(--ease),
+              border-color var(--t-fast) var(--ease),
+              transform var(--t-fast) var(--ease),
+              box-shadow var(--t-base) var(--ease);
+}
+.rice > div:not(.allinfo):not(.img) button:hover {
+  background: var(--g-blue-soft);
+  color: var(--g-blue);
+  border-color: transparent;
+  box-shadow: var(--sh-1);
+}
+.rice > div:not(.allinfo):not(.img) button:active { transform: scale(.94); }
+
+/* the quantity read-out between + and - */
+.rice > div:not(.allinfo):not(.img) span {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: var(--r-pill);
+  background: var(--g-gray-100);
+  color: var(--g-text);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* delete button is the last one in the row */
+.rice > div:not(.allinfo):not(.img) button:last-child {
+  color: var(--g-red);
+  border-color: #f5c9c5;
+  background: var(--g-red-soft);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.rice > div:not(.allinfo):not(.img) button:last-child:hover {
+  background: var(--g-red);
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 780px) {
+  .rice {
+    grid-template-columns: 104px minmax(0, 1fr);
+    grid-template-areas:
+      "img  info"
+      "ctrl ctrl";
+    align-items: start;
+    row-gap: 16px;
+  }
+  div.img { width: 104px; height: 104px; }
+  .rice > div:not(.allinfo):not(.img) { justify-content: flex-start; }
+}
+
+@media (max-width: 520px) {
+  .nave { gap: 8px; padding: 10px 14px; }
+  .back { width: 38px; height: 38px; }
+  .chekout { padding: 9px 16px; font-size: 13.5px; }
+  .wirt { font-size: 15.5px; }
+
+  .section { padding-left: 14px; padding-right: 14px; }
+
+  .rice {
+    grid-template-columns: 1fr;
+    grid-template-areas: "img" "info" "ctrl";
+    row-gap: 14px;
+  }
+  div.img {
+    width: 100%;
+    height: 190px;
+  }
+  .info:nth-child(2) { font-size: 17px; }
+  /* +/-/delete stretch to comfortable tap targets */
+  .rice > div:not(.allinfo):not(.img) { gap: 10px; }
+  .rice > div:not(.allinfo):not(.img) button { flex: 1 1 auto; }
+  .rice > div:not(.allinfo):not(.img) span { flex: 0 0 auto; }
+}
+
+@media (max-width: 360px) {
+  .chekout { padding: 9px 12px; }
+  .wirt { font-size: 14.5px; }
+}
